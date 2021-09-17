@@ -28,13 +28,8 @@ name of the built jar is - encrypt-db-password-1.0.0.jar
 The resulting datasource configuration can be added in context.xml file of Tomcat, like below :
 
 Example Datasource configuration:
-<p>
-<Resource name="jdbc/musicIncStoreDB" auth="Container" type="javax.sql.DataSource"
-maxTotal="100" maxIdle="30" maxWaitMillis="10000" driverClassName="org.mariadb.jdbc.Driver"
-factory="org.t246osslab.tomcat.dbcp.dbcp2.EncryptionDataSourceFactory" 
-username="<your_username>" password="<your_encrypted_password>"
-url="jdbc:mysql://localhost:3306/musicIncStore"/> 
-</p>
+<br>
+Please see sample context.xml provided in this repository.
 
 Also place the MariaDB JDBC driver jar in the lib folder of Tomcat. The MariaDB connector jar to be placed is:
 
