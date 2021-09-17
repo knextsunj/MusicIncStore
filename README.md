@@ -32,7 +32,6 @@ To build:
 mvn clean install
 
 You can use any Java supported OS,IDE or application server for developing this project. I have used the below for my development environment:
-
 <br>
 <br>
 			OS:    MX Linux 
