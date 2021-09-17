@@ -79,4 +79,10 @@ hibernate.dialect.value = org.hibernate.dialect.MySQL8Dialect(MySQL 8)
 or
 <br>
 hibernate.dialect.value = org.hibernate.dialect.MySQL57Dialect(MySQL 5.7)
+<br>
+<br>
+3. Update the JDBC driver name in the tomcat JNDI datasource configuration
+   in context.xml. See sample context.xml for more details.
+<br>
+<br>
 
