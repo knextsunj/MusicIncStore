@@ -35,11 +35,4 @@ factory="org.t246osslab.tomcat.dbcp.dbcp2.EncryptionDataSourceFactory"
 username="your_username" password="your_encrypted_password"
 url="jdbc:mysql://localhost:3306/musicIncStore"/>
 
-<!-- <Resource name="jdbc/musicIncStoreDB" auth="Container" type="javax.sql.DataSource"
-maxTotal="100" maxIdle="30" maxWaitMillis="10000" driverClassName="org.mariadb.jdbc.Driver"
-username="admin" password="Sony123$"
-    url="jdbc:mysql://localhost:3306/musicIncStore"/> -->
-
-
-
 </Context>
