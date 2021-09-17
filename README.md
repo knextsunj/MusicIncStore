@@ -5,7 +5,7 @@ This repository contains a sample application developed for learning purpose for
 various artists around the world.
 
 
-App rumtime environment:
+App runtime environment:
 
 OpenJDK 11
 <br>
