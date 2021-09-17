@@ -35,7 +35,6 @@ You can use any Java supported OS,IDE or application server for developing this 
 
 <br>
 <br>
-
 			OS:    MX Linux 
 <br>
 <br>
