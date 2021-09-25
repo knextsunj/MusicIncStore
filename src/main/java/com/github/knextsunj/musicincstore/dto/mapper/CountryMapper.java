@@ -9,9 +9,9 @@ import com.github.knextsunj.musicincstore.dto.CountryDTO;
 @Mapper(componentModel = "spring")
 public interface CountryMapper {
 
-	@Mapping(source = "description", target = "name")
+	@Mapping(source = "description", target = "countryName")
 	CountryDTO countryToCountryDTO(Country country);
 	
-	@Mapping(source = "name", target = "description")
+	@Mapping(source = "countryName", target = "description")
 	Country countryDTOToCountry(CountryDTO countryDTO);
 }

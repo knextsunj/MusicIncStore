@@ -32,12 +32,12 @@ public class StateServiceImpl implements StateService {
 	@Override
 	public boolean save(StateDTO stateDTO) {
 
-		String countryName = stateDTO.getCountryDTO().getName();
+		String countryName = stateDTO.getCountryDTO().getCountryName();
 		Country country = countryService.fetchCountrybyName(countryName);
 
 		State state = new State();
 		state.setCountry(country);
-		state.setDescription(stateDTO.getName());
+		state.setDescription(stateDTO.getStateName());
 
 		State newState = stateDAO.save(state);
 

@@ -3,6 +3,7 @@ package com.github.knextsunj.musicincstore.domain;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ public class State {
 	@JoinColumn(name = "country_id")
 	private Country country;
 
+	//cascade = CascadeType.MERGE,
 	@OneToMany(targetEntity = City.class, mappedBy = "state")
 	private Set<City> cities;
 

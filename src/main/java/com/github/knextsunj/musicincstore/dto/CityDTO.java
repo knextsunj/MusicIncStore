@@ -12,9 +12,23 @@ public class CityDTO implements Serializable {
 
 	private StateDTO stateDTO;
 
-	private String name;
+	private String cityName;
 
 	private Long id;
+
+	/**
+	 * @return the cityName
+	 */
+	public String getCityName() {
+		return cityName;
+	}
+
+	/**
+	 * @param cityName the cityName to set
+	 */
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
 
 	/**
 	 * @return the stateDTO
@@ -28,20 +42,6 @@ public class CityDTO implements Serializable {
 	 */
 	public void setStateDTO(StateDTO stateDTO) {
 		this.stateDTO = stateDTO;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class CityDTO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, stateDTO);
+		return Objects.hash(cityName, stateDTO);
 	}
 
 	@Override
@@ -72,12 +72,12 @@ public class CityDTO implements Serializable {
 			return false;
 		}
 		CityDTO other = (CityDTO) obj;
-		return Objects.equals(name, other.name) && Objects.equals(stateDTO, other.stateDTO);
+		return Objects.equals(cityName, other.cityName) && Objects.equals(stateDTO, other.stateDTO);
 	}
 
 	@Override
 	public String toString() {
-		return "CityDTO [stateDTO=" + stateDTO + ", name=" + name + "]";
+		return "CityDTO [stateDTO=" + stateDTO + ", name=" + cityName + "]";
 	}
 
 }

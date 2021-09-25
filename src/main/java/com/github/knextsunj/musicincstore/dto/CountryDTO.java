@@ -10,16 +10,22 @@ public class CountryDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1446084164368883214L;
 
-	private String name;
+	private String countryName;
 
 	private Long id;
 
-	public String getName() {
-		return name;
+	/**
+	 * @return the countryName
+	 */
+	public String getCountryName() {
+		return countryName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * @param countryName the countryName to set
+	 */
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
 	}
 
 	public Long getId() {
@@ -32,7 +38,7 @@ public class CountryDTO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(id, countryName);
 	}
 
 	@Override
@@ -44,12 +50,12 @@ public class CountryDTO implements Serializable {
 			return false;
 		}
 		CountryDTO other = (CountryDTO) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
+		return Objects.equals(id, other.id) && Objects.equals(countryName, other.countryName);
 	}
 
 	@Override
 	public String toString() {
-		return "CountryDTO [name=" + name + ", id=" + id + "]";
+		return "CountryDTO [name=" + countryName + ", id=" + id + "]";
 	}
 
 }

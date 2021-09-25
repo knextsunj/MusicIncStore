@@ -31,11 +31,11 @@ public class CityServiceImpl implements CityService {
 	@Override
 	public boolean save(CityDTO cityDTO) {
 
-		String stateName = cityDTO.getStateDTO().getName();
+		String stateName = cityDTO.getStateDTO().getStateName();
 
 		City city = new City();
 		city.setState(stateService.fetchStateByName(stateName));
-		city.setDescription(cityDTO.getName());
+		city.setDescription(cityDTO.getCityName());
 
 		City savedCity = cityDAO.save(city);
 

@@ -56,6 +56,7 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Country fetchCountrybyName(String name) {
 
 		return countryDAO.findCountryByDescription(name);

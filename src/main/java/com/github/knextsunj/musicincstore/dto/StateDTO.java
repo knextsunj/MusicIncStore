@@ -12,9 +12,23 @@ public class StateDTO implements Serializable {
 
 	private CountryDTO countryDTO;
 
-	private String name;
+	private String stateName;
 
 	private Long id;
+
+	/**
+	 * @return the stateName
+	 */
+	public String getStateName() {
+		return stateName;
+	}
+
+	/**
+	 * @param stateName the stateName to set
+	 */
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
 
 	/**
 	 * @return the countryDTO
@@ -28,20 +42,6 @@ public class StateDTO implements Serializable {
 	 */
 	public void setCountryDTO(CountryDTO countryDTO) {
 		this.countryDTO = countryDTO;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class StateDTO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(countryDTO, name);
+		return Objects.hash(countryDTO, stateName);
 	}
 
 	@Override
@@ -72,12 +72,12 @@ public class StateDTO implements Serializable {
 			return false;
 		}
 		StateDTO other = (StateDTO) obj;
-		return Objects.equals(countryDTO, other.countryDTO) && Objects.equals(name, other.name);
+		return Objects.equals(countryDTO, other.countryDTO) && Objects.equals(stateName, other.stateName);
 	}
 
 	@Override
 	public String toString() {
-		return "StateDTO [countryDTO=" + countryDTO + ", name=" + name + "]";
+		return "StateDTO [countryDTO=" + countryDTO + ", name=" + stateName + "]";
 	}
 
 }
