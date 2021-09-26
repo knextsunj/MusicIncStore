@@ -9,31 +9,30 @@ App runtime environment:
 
 OpenJDK 11
 <br>
-Apache Tomcat 9.0.37
+Payara 5.2021.7(community version)
 <br>
-Spring 5
+Java EE 8
 <br>
-Hibernate 5
+EclipseLink 2.7
 <br>
 MariaDB 10.3- the default MySQL on Debian based linux distributions
 
-The datasource is taken from JNDI via Tomcat. Tomcat by default does not have a feature to encrypt passwords for databases in it's configuration files. Hence it has to be manually setup.I have used a readily available solution in github:
-
-				https://github.com/k-tamura/encrypt-db-password
-				
-
-I forked the above repository to github, followed the instructions from the original repository and built the jar. Then placed the jar in lib folder of Tomcat.The 
-name of the built jar is - encrypt-db-password-1.0.0.jar
-
-The resulting datasource configuration can be added in context.xml file of Tomcat, like below :
-
-Example Datasource configuration:
-<br>
-Please see sample context.xml provided in this repository.
-
-Also place the MariaDB JDBC driver jar in the lib folder of Tomcat. The MariaDB connector jar to be placed is:
+MariaDB JDBC driver jar has to be added to the libraries of Payara Server. The MariaDB connector jar to be placed is:
 
  mariadb-java-client-2.7.3 
+ 
+From the command prompt in your OS run the following command:
+
+./asadmin add-library <PATH_TO_YOUR_FOLDER/mariadb-java-client-2.7.3.jar
+
+For example if you are using Linux/Mac or any other Unix like OS:
+
+./asadmin add-library /home/jack/Downloads/mariadb-java-client-2.7.3.jar
+
+where jack is the username.
+
+For Windows please see below link:
+https://godhani.me/setting-up-payara-development-environment/
 
 To build:
 mvn clean install
@@ -59,30 +58,59 @@ You can use any Java supported OS,IDE or application server for developing this 
 			Database IDE: SQLYog Community Edition - used via WINE
 <br>
 <br>
-			Application Server: Apache Tomcat 9.0.37
+			Application Server: Payara 5.2021.7(community version)
 	
 If you wish to use MySQL instead of MariaDB then please do the following:
 <br>
 <br>
-1.Place the MySQL JDBC driver jar in the ib folder of Tomcat
-<br>
-<br>
-2.Under src/main/resources open app.properties and update the hibernate dialect key:
-Replace 
-<br>
-hibernate.dialect.value = org.hibernate.dialect.MariaDB103Dialect
-<br>
-with 
-<br>
-hibernate.dialect.value = org.hibernate.dialect.MySQL8Dialect(MySQL 8)
-<br>
-or
-<br>
-hibernate.dialect.value = org.hibernate.dialect.MySQL57Dialect(MySQL 5.7)
-<br>
-<br>
-3. Update the JDBC driver name in the tomcat JNDI datasource configuration
-   in context.xml. See sample context.xml for more details.
-<br>
-<br>
+1.Please see below link and follow the instructions to setup JDBC connection pool and
+JDBC resource.
 
+https://blog.payara.fish/using-mysql-with-payara
+
+Give the following details for JDBC connection pool and JDBC resource:
+
+<h3>JDBC connection pool:</h3>
+Datasource class name: org.mariadb.jdbc.MariaDbDataSource
+
+Pool name: MusicIncStorePool
+
+Resource Type:javax.sql.DataSource
+
+Give these under properties for the JDBC connection pool:
+serverName:localhost
+
+databaseName:musicIncStore
+
+URL: jdbc:mysql://localhost:3306/musicIncStore	
+
+username: <your_db_user>
+password:<your_db_password>
+
+<h3>JDBC Resource</h3>
+
+JNDI name: jdbc/musicIncStoreDB
+
+Pool Name:MusicIncStorePool
+
+<br>
+<br>
+2. EclipseLink is used as the JPA provider as that is bundled with Payara.Hence you will
+find the following entry in persistence.xml:
+
+```xml
+	<property name="eclipselink.target-database" value="MySQL"/>
+```
+
+This is the equivalent of a dialect declaration in Hibernate.Since MariaDB is a fork of MySQL and compatible with it
+this setting works well.
+
+Application architecture/Technology Stack:
+
+This application is built for an Angular frontend, hence consists of services to be provided in response to requests from Angular.
+
+REST API layer: JAX-RS with Jersey(bundled with Payara). All JAX-RS resource classes are implemented as no interface view Local Stateless Session EJBs.
+
+Service/DAO layers:Implemented as Local Stateless Session Beans.
+
+MapStruct is used for DTO-JPA Entity mapping and vice-versa and Jackson is used for JSON marshalling/unmarshalling.
