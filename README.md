@@ -86,3 +86,13 @@ hibernate.dialect.value = org.hibernate.dialect.MySQL57Dialect(MySQL 5.7)
 <br>
 <br>
 
+Application architecture/Technology Stack:
+
+This application is built for an Angular frontend, hence consists of services to be provided in response to requests from Angular.
+
+REST API layer: Spring MVC. 
+
+Service/DAO layers:Spring POJO beans
+
+MapStruct is used for DTO-JPA Entity mapping and vice-versa and Jackson is used for JSON marshalling/unmarshalling.
+
