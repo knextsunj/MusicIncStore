@@ -107,7 +107,7 @@ find the following entry in persistence.xml:
 This is the equivalent of a dialect declaration in Hibernate.Since MariaDB is a fork of MySQL and compatible with it
 this setting works well.
 
-Application architecture/Technology Stack:
+<h3>Application architecture/Technology Stack:</h3>
 
 This application is built for an Angular frontend, hence consists of services to be provided in response to requests from Angular.
 
