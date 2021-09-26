@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import javax.ejb.EJB;
+import javax.ejb.Local;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import com.github.knextsunj.musicincstore.dao.StateDAO;
 import com.github.knextsunj.musicincstore.domain.Country;
@@ -16,17 +18,18 @@ import com.github.knextsunj.musicincstore.dto.mapper.StateMapper;
 import com.github.knextsunj.musicincstore.service.CountryService;
 import com.github.knextsunj.musicincstore.service.StateService;
 
-@Service
-@Transactional
+@Stateless
+@Local(StateService.class)
+@LocalBean
 public class StateServiceImpl implements StateService {
 
-	@Autowired
+	@EJB
 	private StateDAO stateDAO;
 
-	@Autowired
+	@EJB
 	private CountryService countryService;
 
-	@Autowired
+	@Inject
 	private StateMapper stateMapper;
 
 	@Override

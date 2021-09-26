@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import javax.ejb.EJB;
+import javax.ejb.Local;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import com.github.knextsunj.musicincstore.dao.CountryDAO;
 import com.github.knextsunj.musicincstore.domain.Country;
@@ -14,14 +16,15 @@ import com.github.knextsunj.musicincstore.dto.CountryDTO;
 import com.github.knextsunj.musicincstore.dto.mapper.CountryMapper;
 import com.github.knextsunj.musicincstore.service.CountryService;
 
-@Service
-@Transactional
+@Stateless
+@Local(CountryService.class)
+@LocalBean
 public class CountryServiceImpl implements CountryService {
 
-	@Autowired
+	@EJB
 	private CountryDAO countryDAO;
 
-	@Autowired
+	@Inject
 	private CountryMapper countryMapper;
 
 	@Override
@@ -32,7 +35,6 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<CountryDTO> fetchAllcountries() {
 		List<Country> countryList = countryDAO.findAll();
 		List<CountryDTO> countryDTOList = new ArrayList<>();
@@ -56,9 +58,7 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public Country fetchCountrybyName(String name) {
-
 		return countryDAO.findCountryByDescription(name);
 	}
 

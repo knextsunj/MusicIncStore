@@ -2,15 +2,16 @@ package com.github.knextsunj.musicincstore.dao.impl;
 
 import java.util.List;
 
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
-
-import org.springframework.stereotype.Repository;
 
 import com.github.knextsunj.musicincstore.dao.CountryDAO;
 import com.github.knextsunj.musicincstore.dao.base.GenericDAOImpl;
 import com.github.knextsunj.musicincstore.domain.Country;
 
-@Repository
+@Stateless
+@Local(CountryDAO.class)
 public class CountryDAOImpl extends GenericDAOImpl<Country> implements CountryDAO {
 
 	@Override

@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 import com.github.knextsunj.musicincstore.domain.City;
 import com.github.knextsunj.musicincstore.dto.CityDTO;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "cdi")
 public interface CityMapper {
 
 	@Mapping(source = "cityName", target = "description")

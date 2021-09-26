@@ -2,54 +2,65 @@ package com.github.knextsunj.musicincstore.restws;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.github.knextsunj.musicincstore.dto.CityDTO;
 import com.github.knextsunj.musicincstore.service.CityService;
 
-@Controller
-@RequestMapping("/city")
+@Stateless
+@Path("/city")
 public class CityRestWebService {
 
-	@Autowired
+	@EJB
 	private CityService cityService;
 
-	@PostMapping("/save")
-	@ResponseBody
-	public boolean save(@RequestBody CityDTO cityDTO) {
+	@POST
+	@Path("/save")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean save(CityDTO cityDTO) {
 		return cityService.save(cityDTO);
 	}
 
-	@GetMapping("/fetch/{id}")
-	@ResponseBody
-	public CityDTO getCity(@PathVariable("id") Long id) {
+	@GET
+	@Path("/fetch/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public CityDTO getCity(@PathParam("id") Long id) {
 		return cityService.getCity(id);
 	}
 
-	@PutMapping("/update")
-	@ResponseBody
-	public CityDTO updateCity(@RequestBody CityDTO cityDTO) {
+	@PUT
+	@Path("/update")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public CityDTO updateCity(CityDTO cityDTO) {
 		return cityService.updateCity(cityDTO);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	@ResponseBody
-	public Long deleteCity(@PathVariable("id") Long id) {
+	@DELETE
+	@Path("/delete/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Long deleteCity(@PathParam("id") Long id) {
 		return cityService.deleteCity(id);
 	}
 
-	@GetMapping("/findAllByState/{stateId}")
-	@ResponseBody
-	public List<CityDTO> findAllCitiesByState(@PathVariable("stateId") Long stateId) {
+	@GET
+	@Path("/findAllByState/{stateId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<CityDTO> findAllCitiesByState(@PathParam("stateId") Long stateId) {
 		return cityService.fetchAllCitiesByState(stateId);
 	}
 }

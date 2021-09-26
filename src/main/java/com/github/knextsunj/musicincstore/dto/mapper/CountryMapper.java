@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 import com.github.knextsunj.musicincstore.domain.Country;
 import com.github.knextsunj.musicincstore.dto.CountryDTO;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "cdi")
 public interface CountryMapper {
 
 	@Mapping(source = "description", target = "countryName")

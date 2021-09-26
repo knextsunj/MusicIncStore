@@ -10,10 +10,10 @@ import com.github.knextsunj.musicincstore.dao.GenericDAO;
 
 public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
+	private Class<T> type;
+
 	@PersistenceContext
 	protected EntityManager entityManager;
-
-	private Class<T> type;
 
 	public GenericDAOImpl() {
 		Type t = getClass().getGenericSuperclass();
@@ -43,4 +43,5 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 	public void delete(final Long id) {
 		entityManager.remove(find(id));
 	}
+
 }

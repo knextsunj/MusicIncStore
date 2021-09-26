@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 import com.github.knextsunj.musicincstore.domain.State;
 import com.github.knextsunj.musicincstore.dto.StateDTO;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "cdi")
 public interface StateMapper {
 
 	@Mapping(source = "description", target = "stateName")

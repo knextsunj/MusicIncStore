@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import javax.ejb.EJB;
+import javax.ejb.Local;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import com.github.knextsunj.musicincstore.dao.CityDAO;
 import com.github.knextsunj.musicincstore.domain.City;
@@ -15,17 +17,18 @@ import com.github.knextsunj.musicincstore.dto.mapper.CityMapper;
 import com.github.knextsunj.musicincstore.service.CityService;
 import com.github.knextsunj.musicincstore.service.StateService;
 
-@Service
-@Transactional
+@Stateless
+@Local(CityService.class)
+@LocalBean
 public class CityServiceImpl implements CityService {
 
-	@Autowired
+	@EJB
 	private CityDAO cityDAO;
 
-	@Autowired
+	@Inject
 	private CityMapper cityMapper;
 
-	@Autowired
+	@EJB
 	private StateService stateService;
 
 	@Override
