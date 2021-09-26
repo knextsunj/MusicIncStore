@@ -4,6 +4,8 @@ Sample music exhibition and ecommerce portal
 This repository contains a sample application developed for learning purpose for exihibition and sale of audio songs sung by
 various artists around the world.
 
+The branch jee-migration is for the migration of the original application(written using Spring 5 and deployed on Tomcat)
+to Java EE 8 and deployment on Payara 5 server. 
 
 App runtime environment:
 
