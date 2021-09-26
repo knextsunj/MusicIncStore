@@ -86,7 +86,7 @@ hibernate.dialect.value = org.hibernate.dialect.MySQL57Dialect(MySQL 5.7)
 <br>
 <br>
 
-Application architecture/Technology Stack:
+<h3>Application architecture/Technology Stack:</h3>
 
 This application is built for an Angular frontend, hence consists of services to be provided in response to requests from Angular.
 
