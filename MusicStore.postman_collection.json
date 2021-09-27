@@ -33,7 +33,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/app/country/findAll",
+					"raw": "http://localhost:8080/MusicInc-Store/app/state/findAllByCountry/8",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -42,8 +42,31 @@
 					"path": [
 						"MusicInc-Store",
 						"app",
-						"country",
-						"findAll"
+						"state",
+						"findAllByCountry",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get States Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/MusicInc-Store/state/findAllByCountry/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MusicInc-Store",
+						"state",
+						"findAllByCountry",
+						"8"
 					]
 				}
 			},
@@ -55,7 +78,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/city/findAllByState/3",
+					"raw": "http://localhost:8080/MusicInc-Store/app/city/findAllByState/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -63,6 +86,7 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"city",
 						"findAllByState",
 						"3"
@@ -78,7 +102,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"name\": \"Commonwealth of Australia\",\n        \"id\": 10\n    }",
+					"raw": "    {\n        \"countryName\": \"Commonwealth of Australia\",\n        \"id\": 10\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,7 +110,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/country/update",
+					"raw": "http://localhost:8080/MusicInc-Store/app/country/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -94,6 +118,7 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"country",
 						"update"
 					]
@@ -108,7 +133,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n        \"countryDTO\": {\n            \"name\": \"USA\",\n            \"id\": 8\n        },\n        \"name\": \"New York\",\n        \"id\"  : \"5\"\n    }",
+					"raw": " {\n        \"countryDTO\": {\n            \"name\": \"USA\",\n            \"id\": 8\n        },\n        \"stateName\": \"New York State\",\n        \"id\"  : \"5\"\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -116,7 +141,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/state/update",
+					"raw": "http://localhost:8080/MusicInc-Store/app/state/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -124,6 +149,7 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"state",
 						"update"
 					]
@@ -138,7 +164,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n        \"stateDTO\": {\n\n        \"countryDTO\": {\n          \"name\": \"USA\",\n          \"id\": 8\n    },\n            \"name\": \"California\",\n            \"id\": 3\n        },\n        \"name\": \"Sacramento\",\n        \"id\"  :  9\n\n    }",
+					"raw": " {\n        \"stateDTO\": {\n\n        \"countryDTO\": {\n          \"countyName\": \"USA\",\n          \"id\": 8\n    },\n            \"stateName\": \"California\",\n            \"id\": 3\n        },\n        \"cityName\": \"Sacramento\",\n        \"id\"  :  9\n\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -146,7 +172,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/city/update",
+					"raw": "http://localhost:8080/MusicInc-Store/app/city/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -154,6 +180,7 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"city",
 						"update"
 					]
@@ -176,7 +203,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/country/delete/4",
+					"raw": "http://localhost:8080/MusicInc-Store/app/country/delete/23",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -184,9 +211,10 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"country",
 						"delete",
-						"4"
+						"23"
 					]
 				}
 			},
@@ -207,7 +235,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/country/delete/4",
+					"raw": "http://localhost:8080/MusicInc-Store/app/state/delete/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -215,9 +243,10 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
-						"country",
+						"app",
+						"state",
 						"delete",
-						"4"
+						"10"
 					]
 				}
 			},
@@ -238,7 +267,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/city/delete/4",
+					"raw": "http://localhost:8080/MusicInc-Store/app/city/delete/14",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,9 +275,10 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"city",
 						"delete",
-						"4"
+						"14"
 					]
 				}
 			},
@@ -261,7 +291,38 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"name\": \"Timbucktoo\"\n    }",
+					"raw": "    {\n        \"countryName\": \"Timbucktoo12\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/MusicInc-Store/app/country/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MusicInc-Store",
+						"app",
+						"country",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Country-JEE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"countryName\": \"Timbucktoo1\"\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -291,7 +352,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n        \"countryDTO\": {\n            \"name\": \"USA\",\n            \"id\": 8\n        },\n        \"name\": \"NY\"\n    }",
+					"raw": " {\n        \"countryDTO\": {\n            \"countryName\": \"USA\",\n            \"id\": 8\n        },\n        \"stateName\": \"Rhode Island1\"\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -299,7 +360,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/state/save",
+					"raw": "http://localhost:8080/MusicInc-Store/app/state/save",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -307,6 +368,7 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"state",
 						"save"
 					]
@@ -321,7 +383,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n        \"stateDTO\": {\n\n        \"countryDTO\": {\n          \"name\": \"USA\",\n          \"id\": 8\n    },\n            \"name\": \"California\",\n            \"id\": 3\n        },\n        \"name\": \"Fresno\"\n\n    }",
+					"raw": " {\n        \"stateDTO\": {\n\n        \"countryDTO\": {\n          \"countryName\": \"USA\",\n          \"id\": 8\n    },\n            \"stateName\": \"Rhode Island\",\n            \"id\": 9\n        },\n        \"cityName\": \"Johnston1\"\n\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -329,7 +391,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/MusicInc-Store/city/save",
+					"raw": "http://localhost:8080/MusicInc-Store/app/city/save",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -337,6 +399,7 @@
 					"port": "8080",
 					"path": [
 						"MusicInc-Store",
+						"app",
 						"city",
 						"save"
 					]
